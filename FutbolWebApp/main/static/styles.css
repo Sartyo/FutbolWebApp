@@ -209,3 +209,17 @@ body{
 .auth-form-field input:hover{
     border: solid 1px #2f2f30;
 }
+
+.sign-up-form-container{
+    width: 100%;
+    display: grid;
+    gap: 25px;
+    justify-content: center;
+}
+
+.sign-up-msg{
+    font-size: 32px;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}

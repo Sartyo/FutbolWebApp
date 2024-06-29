@@ -5,5 +5,17 @@
 {% endblock title %}
 
 {% block content %}
-    
+    <form action="" method="POST" class="sign-up-form-container">
+        <p class="sign-up-msg">To create an account with us please fill the form with your information</p>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="auth-form-field">
+                {{field.errors}}
+                {{field.label_tag}}
+                {{field}}
+            </div>
+        {% endfor %}
+        <p class="auth-msg">Do you already have an account? <a href="{% url 'authenticator:login' %}" class="auth-msg">Use this link</a> to login instead</p>
+        <input class="submit-button" type="submit" value="Sign Up">
+    </form>
 {% endblock content %}

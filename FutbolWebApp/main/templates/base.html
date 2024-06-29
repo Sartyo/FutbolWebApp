@@ -25,7 +25,7 @@
 
             <div class="auth-menu">
                 {% if user.is_authenticated %}
-                    <span class="username-header">Hi {{ user.username }}!</span> &nbsp; &nbsp; <a href="{% url 'authenticator:logout' %}" class="auth-link">Logout</a>
+                    <span class="username-header">Hi {{ request.user.first_name }} {{request.user.last_name}}!</span> &nbsp; &nbsp; <a href="{% url 'authenticator:logout' %}" class="auth-link">Logout</a>
                 {% else %}
                     <a href="{% url 'authenticator:login' %}" class="auth-link">Login</a>
                     <span style="line-height: 30px; vertical-align: middle; color: white; font-size: 24px;"> | </span>
