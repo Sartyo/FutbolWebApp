@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Shop
+{% endblock title %}
+
+{% block content %}
+    <div class="shop-container">
+        <div class="tags-header-container">
+            <div class="tags-container">
+                {% for tag in tags %}
+                    <a class="tag-label {% if request.path == 'tag/{{tag.id}}' %}active-link{% endif %}" href="{% url 'shop:tagProduct' tag.id %}">{{tag.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="shopping-cart-container">
+            {% if request.user.is_authenticated %}
+                {% include 'shoppingCart/widget.html' %}
+            {% else %}
+                <p class="must-log-message">You must login to see the shopping cart</p>
+            {% endif %}
+        </div>
+        <div class="products-container">
+            {% for product in products %}
+                <div class="product-item">
+                    <div class="product-item-header">
+                        <p class="product-name">{{product.name}}</p>
+                        <p class="product-tag">Tag: {{product.tag}}</p>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-image-container">
+                            <img src="{{product.image.url}}" class="product-image">
+                        </div>
+                        <p class="product-description">{{product.description}}</p>
+                    </div>
+                    <div class="product-footer">
+                        <p class="product-price">Price: {{product.price}}$</p>
+                        <p class="product-in-stock">In stock: {% if product.stock %}Yes{% else %}No{% endif %}</p>
+                    </div>
+                    <a class="add-to-cart-button" href="{% url 'shoppingCart:addProduct' product.id %}">Add to cart</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

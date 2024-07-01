@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
+from django.contrib.messages import constants as msgs
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main','contactUs', 'authenticator',
+    'shop', 'shoppingCart', 'orders',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,8 @@ ROOT_URLCONF = 'FutbolWebApp.urls'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'main', 'templates')
 
+CART_SESSION_ID = 'cart'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -68,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shoppingCart.context_processor.total_import_shopping_cart',
             ],
         },
     },
@@ -128,6 +133,9 @@ AUTH_USER_MODEL = 'authenticator.CustomUser'
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -140,3 +148,11 @@ EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+MESSAGE_TAGS = {
+    msgs.DEBUG: 'debug',
+    msgs.INFO: 'Info',
+    msgs.SUCCESS: 'Success',
+    msgs.WARNING: 'Warning',
+    msgs.ERROR: 'Danger',
+}
