@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main','contactUs', 'authenticator',
     'shop', 'shoppingCart', 'orders',
+    'teamBets', 'betCart', 'bets',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,7 @@ ROOT_URLCONF = 'FutbolWebApp.urls'
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'main', 'templates')
 
 CART_SESSION_ID = 'cart'
+BET_CART_SESSION_ID = 'betCart'
 
 TEMPLATES = [
     {
@@ -73,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'shoppingCart.context_processor.total_import_shopping_cart',
+                'betCart.context_processor.total_import_bet_cart'
             ],
         },
     },

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Matches
+{% endblock title %}
+
+{% block content %}
+    <div class="matches-container">
+        <div class="matches-header-container">
+            <div class="search-bar-container">
+                <p class="search-bar-text">Team Search</p>
+                <input class="matches-search-bar" type="text">
+            </div>
+        </div>
+
+        <div class="bet-cart-container">
+            {% if request.user.is_authenticated %}
+                {% include 'bettingCart/widget.html' %}
+            {% else %}
+                <p class="must-log-message">You must login to see the shopping cart</p>
+            {% endif %}
+        </div>
+
+        <div class="match-list-container">
+            {% for match in matches %}
+                <a class="match-item" href="#">
+
+                    <div class="match-header">
+                        <p class="match-header-text">{{match.match_date}}</p>
+                    </div>
+
+                    <div class="match-content">
+                        <p class="match-content-text">{{match.team_1.name}} vs {{match.team_2.name}}</p>
+                    </div>
+
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

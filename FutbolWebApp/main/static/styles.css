@@ -11,7 +11,7 @@ body{
 .body-header{
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 20% 55% 25%;
     height: 100px;
     background-color: #1a2b3d;
     top: 0;
@@ -39,6 +39,12 @@ body{
 }
 
 .nav-menu-header{
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu-container{
+    width: 70%;
     display: flex;
     justify-content: space-between;
 }
@@ -335,4 +341,64 @@ body{
     transform: translate(-50%, -50%);
     font-size: 32px;
     text-align: center;
+}
+
+.matches-header-container{
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background-color: #5fabd6;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar-container{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    justify-self: center;
+    justify-content: center;
+}
+
+.search-bar-text{
+    width: 15%;
+}
+
+.matches-search-bar{
+    width: 60%;
+    height: 25px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.bet-cart-container{
+    float: right;
+    padding-top: 50px;
+    margin-right: 2%;
+}
+
+.match-list-container{
+    padding-top: 70px;
+    width: 60%;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    justify-content: center;
+}
+
+.match-item{
+    background-color: #5a95d5;
+    color: white;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: ease-in-out 0.3s;
+}
+
+.match-item:hover{
+    cursor: pointer;
+    transform: scale(1.05);
 }

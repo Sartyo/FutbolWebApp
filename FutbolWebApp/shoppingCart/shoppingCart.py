@@ -28,7 +28,7 @@ class ShoppingCart:
         self.save_shopping_cart()
 
     def save_shopping_cart(self):
-        self.session["cart"] = self.shopping_cart
+        self.session[settings.CART_SESSION_ID] = self.shopping_cart
         self.session.modified = True
 
     def delete_product(self, product):
@@ -48,5 +48,5 @@ class ShoppingCart:
         self.save_shopping_cart()
 
     def clear_shopping_cart(self):
-        self.session['cart']= {}
+        self.session[settings.CART_SESSION_ID]= {}
         self.session.modified = True

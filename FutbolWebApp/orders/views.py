@@ -10,7 +10,7 @@ from orders.models import Order, OrderLine
 
 # Create your views here.
 
-@login_required(login_url='/auth/login') # type: ignore
+@login_required(login_url='/auth/login')
 def make_order(request):
     order = Order.objects.create(user=request.user)
     cart = ShoppingCart(request)

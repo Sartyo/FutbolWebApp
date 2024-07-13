@@ -19,8 +19,11 @@
             </div>
 
             <div class="nav-menu-header">
-                <a href="{% url 'shop:shop' %}" class="nav-menu-link">Shop</a>
-                <a href="{% url 'contactUs:contact' %}" class="nav-menu-link">Contact</a>
+                <div class="nav-menu-container">
+                    <a href="{% url 'teamBets:matches' %}" class="nav-menu-link">Matches</a>
+                    <a href="{% url 'shop:shop' %}" class="nav-menu-link">Shop</a>
+                    <a href="{% url 'contactUs:contact' %}" class="nav-menu-link">Contact</a>
+                </div>
             </div>
 
             <div class="auth-menu">
