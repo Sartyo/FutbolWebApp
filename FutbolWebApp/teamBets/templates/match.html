@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Match Details
+{% endblock title %}
+
+{% block content %}
+    <div class="match-details-container">
+
+        <div class="match-details-header">
+            <a href="{% url 'teamBets:matches' %}" class="return-button">X</a>
+            <p>{{match.team_1.name}} vs {{match.team_2.name}}</p>
+        </div>
+
+        <div class="match-details-content">
+
+            <p class="match-details-date-text">{{match.match_date}}</p>
+
+            <div class="match-details-teams">
+                
+                <div class="team-details">
+                    <p class="team-details-text">{{match.team_1.name}}</p>
+                    <p class="team-details-text">skill: {{match.team_1.skill}}</p>
+                </div>
+    
+                <p class="vs-text">VS</p>
+    
+                <div class="team-details">
+                    <p class="team-details-text">{{match.team_2.name}}</p>
+                    <p class="team-details-text">skill: {{match.team_2.skill}}</p>
+                </div>
+
+            </div>
+
+            <form method="post" action="{% url 'betCart:place_bet' %}" class="bet-form">
+                {% csrf_token %}
+                <input type="text" value="{{match.id}}" name="match_id" id="match_id">
+                <select name="team_choice" id="team_choice" class="team-choice" required>
+                    <option value="match.team_1">{{match.team_1.name}}</option>
+                    <option value="match.team_2">{{match.team_2.name}}</option>
+                </select>
+                <input type="number" class="bet-amount" name="bet_amount" id="bet_amount" required>
+                <input type="submit" value="Place Bet" class="place-bet-button">
+            </form>
+        </div>
+    </div>
+{% endblock content %}

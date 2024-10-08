@@ -11,3 +11,7 @@ def matches(request):
 def bet(request):
     clear_bet_cart(request)
     return render(request, 'bet.html')
+
+def match(request, match_id):
+    match = Match.objects.get(id = match_id)
+    return render(request, 'match.html', {'match': match})
